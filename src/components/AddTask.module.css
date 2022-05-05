@@ -1,0 +1,45 @@
+.main{
+  width: 30rem;
+  max-width: 90%;
+  margin: 3rem auto;
+  padding: 2rem;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+.add{
+  padding:10px;
+}
+.add label{
+    padding-left:40%;
+    font-size: 40px;
+    font-weight:1000;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+.add input {
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    font: inherit;
+    line-height: 2rem;
+    padding: 0 0.25rem;
+  }
+  
+  .add input:focus {
+    outline: none;
+    background: #fad0ec;
+    border-color: #8b005d;
+  }
+
+.btn button {
+    margin-left:10px;
+    font: inherit;
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #8b005d;
+    color: white;
+    background: #8b005d;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.26);
+    cursor: pointer;
+  }
+  
+  
