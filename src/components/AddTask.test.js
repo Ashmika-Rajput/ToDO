@@ -1,23 +1,34 @@
 import { render,screen } from "@testing-library/react";
+
 import userEvent from "@testing-library/user-event";
 import AddTask from './AddTask';
 
 
 describe('Add task Component', () => {
     test('render To Do',()=>{
-        render(<AddTask/>);
-        const taskElement = screen.getByText('ToDo',{exact:false});
-        expect(taskElement).toBeInTheDocument();
-   })
-   
-//    test('render changed! if the button was clicked',()=>{
-//        //Arrange
-//           render(<AddTask/>);
-//        //Act
-//           const buttonElement=screen.getByRole('button');
-//           userEvent.click(buttonElement);
-//        //Assert
-//           const outputElement=screen.getByText('Create Task');
-//           expect(outputElement).toBeInTheDocument();
-//    })
+        //Arrange
+          render(<AddTask/>);
+        //Assert
+          const taskElement = screen.getByText('ToDo');
+          expect(taskElement).toBeInTheDocument();
+    })
+    test('renders "Create task" button is enabled or not ',()=>{
+        //Arrange
+           render(<AddTask/>);
+        //Assert
+           const outputElement=screen.getByRole('button',{name:'Create Task'})
+           expect(outputElement).toBeEnabled();
+
+    })
+    test('renders input field changes',()=>{
+       //Arrange   
+           render(<AddTask/>);
+       //Act
+           const inputElement=screen.getByPlaceholderText('Add todo...','Create 1st task');
+           userEvent.type(inputElement);
+       //Assert
+           const outputElement=screen.getByRole('button',{name:'Create Task'});
+           expect(outputElement).toBeInTheDocument();   
+    })
+    
 })
