@@ -27,8 +27,17 @@ describe('Add task Component', () => {
            const inputElement=screen.getByPlaceholderText('Add todo...','Create 1st task');
            userEvent.type(inputElement);
        //Assert
-           const outputElement=screen.getByRole('button',{name:'Create Task'});
-           expect(outputElement).toBeInTheDocument();   
+           expect(inputElement).toBeInTheDocument();   
     })
-    
+    test('renders input field changes to empty upon button click',()=>{
+        //Arrange   
+            render(<AddTask/>);
+        //Act
+            const inputElement=screen.getByPlaceholderText('Add todo...');
+            const buttonElement=screen.getByRole('button',{name:'Create Task'});
+            userEvent.type(inputElement);
+            userEvent.click(buttonElement);
+        //Assert 
+            expect(inputElement.value).toBe("");   
+     })
 })
