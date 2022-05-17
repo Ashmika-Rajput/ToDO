@@ -9,7 +9,7 @@ export default function NewTask(props) {
           <div className={classes.task} >
             <div>
               {props.newTask.map((item, index) => (
-                <div key={index}  className={classes.display}>  
+                <div key={index}  className={classes.display} data-testid="task">  
                     <p>{item}</p>
                   <div>
                     <button onClick={()=> props.deleteTodo(index,'pending')} >Delete</button>
@@ -23,7 +23,7 @@ export default function NewTask(props) {
           <div className={classes.task} >
             <div >
               {props.completedTodos.map((item, index) => (
-                <div key={index} className={classes.display}>
+                <div key={index} className={classes.display} data-testid="task" >
                   <p>{item}</p>
                   <div>
                     <button onClick={()=> props.deleteTodo(index)} >Delete</button>

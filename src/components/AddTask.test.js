@@ -1,4 +1,4 @@
-import { render,screen } from "@testing-library/react";
+import { fireEvent, render,screen } from "@testing-library/react";
 
 import userEvent from "@testing-library/user-event";
 import AddTask from './AddTask';
@@ -40,4 +40,33 @@ describe('Add task Component', () => {
         //Assert 
             expect(inputElement.value).toBe("");   
      })
+})
+//INTEGRATION TEST
+const addTask=(task)=>{
+    const inputElement=screen.getByPlaceholderText('Add todo...');
+    const buttonElement=screen.getByRole('button',{name:'Create Task'});
+    task.forEach(task=>{
+        fireEvent.change(inputElement,{target:{value:task}});
+        fireEvent.click(buttonElement);
+    })
+}
+describe('Add Component',()=>{
+    test('render display single task as list upon creating task',()=>{
+        //Arrange
+           render(<AddTask/>);
+        //Act
+           addTask(['Go Shopping']);
+        //Assert
+           const divElement=screen.getByText('Go Shopping');
+           expect(divElement).toBeInTheDocument();
+    })
+    test('render display multiple task as list upon creating task',()=>{
+        //Arrange
+           render(<AddTask/>);
+        //Act
+           addTask(['Go Shopping','Pay Bill','Rent a Flat']);
+        //Assert
+           const divElement=screen.getAllByTestId("task");
+           expect(divElement.length).toBe(5);
+    })
 })
