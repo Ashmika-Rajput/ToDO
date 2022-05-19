@@ -1,35 +1,35 @@
-import React,{useState,useContext} from 'react';
-import NewTask from './NewTask';
+import React,{useState} from 'react';
+import TaskList from './TaskList';
 import classes from './AddTask.module.css';
 
 
 export default function AddTask() {
-    const [task, setTask] = useState("");
-    const [newTask, setNewTask] = useState(['Pay Electricity Bill']);
+    const [todo, setTodo] = useState("");
+    const [pendingTodos, setPendingTodos] = useState(['Pay Electricity Bill']);
     const [completedTodos, setCompletedTodos] = useState(['Rent a flat.']);
      
    const changeHandler=(event)=>{
-      setTask(event.target.value);
+      setTodo(event.target.value);
    }
 
-    function completeTodo(todoIndex) {
-      const pendingTask = newTask[todoIndex];
+    function completeHandler(todoIndex) {
+      const pendingTask = pendingTodos[todoIndex];
       setCompletedTodos([...completedTodos, pendingTask]);
-      deleteTodo(todoIndex, "pending");
+      deleteHandler(todoIndex, "pending");
     }
   
 
-    function deleteTodo(todoIndex, targetSection) {
-      const targetList =targetSection === "pending" ? newTask : completedTodos;
-      const setter = targetSection === "pending" ? setNewTask : setCompletedTodos;
+    function deleteHandler(todoIndex, targetSection) {
+      const targetList =targetSection === "pending" ? pendingTodos : completedTodos;
+      const setter = targetSection === "pending" ? setPendingTodos : setCompletedTodos;
       const filteredTodos = targetList.filter((_, index) => todoIndex !== index);
       setter(filteredTodos);
     }
   
-    const addHandler=()=>{
-        setNewTask([...newTask,task])
-        setTask('');
-        console.log(newTask);
+    const createTaskHandler=()=>{
+        setPendingTodos([...pendingTodos,todo])
+        setTodo('');
+        console.log(pendingTodos);
         
 }
     return (
@@ -39,17 +39,17 @@ export default function AddTask() {
            <h1>ToDo</h1>
            <input type="text"
                    placeholder="Add todo..."
-                   value={task}
+                   value={todo}
                    onChange={changeHandler}
             />
         </div> 
         <div className={classes.btn}>
-        <button onClick={addHandler} >Create Task</button>
+        <button onClick={createTaskHandler} >Create Task</button>
         </div> 
-        <NewTask newTask={newTask} 
-                 completeTodo={completeTodo} 
-                 deleteTodo={deleteTodo} 
+        <TaskList pendingTodos={pendingTodos} 
                  completedTodos={completedTodos}
+                 completeHandler={completeHandler} 
+                 deleteHandler={deleteHandler} 
                  
                  />
       </div>

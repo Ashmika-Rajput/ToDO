@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './NewTask.module.css';
+import classes from './TaskList.module.css';
 
 
 export default function NewTask(props) {
@@ -8,12 +8,12 @@ export default function NewTask(props) {
           <h2>Pending</h2>
           <div className={classes.task} >
             <div>
-              {props.newTask.map((item, index) => (
+              {props.pendingTodos.map((todo, index) => (
                 <div key={index}  className={classes.display} data-testid="task">  
-                    <p>{item}</p>
+                    <p>{todo}</p>
                   <div>
-                    <button onClick={()=> props.deleteTodo(index,'pending')} >Delete</button>
-                    <button onClick={()=> props.completeTodo(index,'completed')}>Complete</button>
+                    <button onClick={()=> props.deleteHandler(index,'pending')} >Delete</button>
+                    <button onClick={()=> props.completeHandler(index,'completed')}>Complete</button>
                   </div>
                 </div>
               ))}
@@ -22,11 +22,11 @@ export default function NewTask(props) {
             <h2>Completed</h2>
           <div className={classes.task} >
             <div >
-              {props.completedTodos.map((item, index) => (
+              {props.completedTodos.map((todo, index) => (
                 <div key={index} className={classes.display} data-testid="task" >
-                  <p>{item}</p>
+                  <p>{todo}</p>
                   <div>
-                    <button onClick={()=> props.deleteTodo(index)} >Delete</button>
+                    <button onClick={()=> props.deleteHandler(index)} >Delete</button>
                   </div>
                 </div>
               ))}

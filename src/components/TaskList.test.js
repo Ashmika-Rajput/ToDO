@@ -1,13 +1,13 @@
 import {render, screen,fireEvent} from '@testing-library/react';
 
-import NewTask from './NewTask';
+import TaskList from './TaskList';
 
 const MockFunc=jest.fn();
 
 describe('New Task Component',()=>{
     test('renders newtask', () => {
          //Arrange    
-              render( <NewTask  newTask={['Do It']}
+              render( <TaskList  newTask={['Do It']}
                          completedTodos={[]}
                          completeTodo={MockFunc}
                          deleteTodo={MockFunc}     
@@ -19,7 +19,7 @@ describe('New Task Component',()=>{
       })
       test('renders deleting newtask', () => {
         //Arrange    
-             render( <NewTask  newTask={['Do It']}
+             render( <TaskList  newTask={['Do It']}
                         completedTodos={[]}
                         completeTodo={MockFunc}
                         deleteTodo={MockFunc}     
