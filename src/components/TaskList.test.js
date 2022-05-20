@@ -4,13 +4,13 @@ import TaskList from './TaskList';
 
 const MockFunc=jest.fn();
 
-describe('New Task Component',()=>{
-    test('renders newtask', () => {
+describe('Task List Component',()=>{
+    test('renders taskList', () => {
          //Arrange    
-              render( <TaskList  newTask={['Do It']}
+              render( <TaskList  pendingTodos={['Do It']}
                          completedTodos={[]}
-                         completeTodo={MockFunc}
-                         deleteTodo={MockFunc}     
+                         completeHandler={MockFunc}
+                         deleteHandler={MockFunc}     
                     />);
         //Act  
         //Assert           
@@ -19,10 +19,10 @@ describe('New Task Component',()=>{
       })
       test('renders deleting newtask', () => {
         //Arrange    
-             render( <TaskList  newTask={['Do It']}
+             render( <TaskList  pendingTodos={['Do It']}
                         completedTodos={[]}
-                        completeTodo={MockFunc}
-                        deleteTodo={MockFunc}     
+                        completeHandler={MockFunc}
+                        deleteHandler={MockFunc}     
                    />);
        //Act 
              const paraElement=screen.getByText('Do It');

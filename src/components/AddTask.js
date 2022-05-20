@@ -29,8 +29,6 @@ export default function AddTask() {
     const createTaskHandler=()=>{
         setPendingTodos([...pendingTodos,todo])
         setTodo('');
-        console.log(pendingTodos);
-        
 }
     return (
     <div>
