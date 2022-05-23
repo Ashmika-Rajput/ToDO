@@ -1,5 +1,5 @@
 import React,{useState} from 'react';
-import TaskList from './TaskList';
+import TodoList from './TodoList';
 import classes from './AddTask.module.css';
 
 
@@ -19,14 +19,14 @@ export default function AddTask() {
     }
   
 
-    function deleteHandler(todoIndex, targetSection) {
+ async function deleteHandler(todoIndex, targetSection) {
       const targetList =targetSection === "pending" ? pendingTodos : completedTodos;
       const setter = targetSection === "pending" ? setPendingTodos : setCompletedTodos;
-      const filteredTodos = targetList.filter((_, index) => todoIndex !== index);
+      const filteredTodos =  targetList.filter((_, index) => todoIndex !== index);
       setter(filteredTodos);
     }
   
-    const createTaskHandler=()=>{
+     const createTaskHandler=()=>{
         setPendingTodos([...pendingTodos,todo])
         setTodo('');
 }
@@ -44,7 +44,7 @@ export default function AddTask() {
         <div className={classes.btn}>
         <button onClick={createTaskHandler} >Create Task</button>
         </div> 
-        <TaskList pendingTodos={pendingTodos} 
+        <TodoList pendingTodos={pendingTodos} 
                  completedTodos={completedTodos}
                  completeHandler={completeHandler} 
                  deleteHandler={deleteHandler} 
