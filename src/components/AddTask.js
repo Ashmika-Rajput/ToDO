@@ -12,7 +12,7 @@ export default function AddTask() {
       setTodo(event.target.value);
    }
 
-    function completeHandler(todoIndex) {
+async function completeHandler(todoIndex) {
       const pendingTask = pendingTodos[todoIndex];
       setCompletedTodos([...completedTodos, pendingTask]);
       deleteHandler(todoIndex, "pending");
