@@ -5,7 +5,7 @@ import classes from './AddTask.module.css';
 
 export default function AddTask() {
     const [todo, setTodo] = useState("");
-    const [pendingTodos, setPendingTodos] = useState(['Pay Bill']);
+    const [pendingTodos, setPendingTodos] = useState(['Pay Electricity Bill']);
     const [completedTodos, setCompletedTodos] = useState(['Rent a flat.']);
      
    const changeHandler=(event)=>{
