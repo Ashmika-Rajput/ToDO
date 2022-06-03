@@ -5,7 +5,7 @@ import classes from './AddTask.module.css';
 
 export default function AddTask() {
     const [todo, setTodo] = useState("");
-    const [pendingTodos, setPendingTodos] = useState(['Pay Electricity Bill']);
+    const [pendingTodos, setPendingTodos] = useState(['Pay Bill']);
     const [completedTodos, setCompletedTodos] = useState(['Rent a flat.']);
      
    const changeHandler=(event)=>{
@@ -16,14 +16,16 @@ async function completeHandler(todoIndex) {
       const pendingTask = pendingTodos[todoIndex];
       setCompletedTodos([...completedTodos, pendingTask]);
       deleteHandler(todoIndex, "pending");
+      console.log(completedTodos);
     }
   
 
  async function deleteHandler(todoIndex, targetSection) {
       const targetList =targetSection === "pending" ? pendingTodos : completedTodos;
       const setter = targetSection === "pending" ? setPendingTodos : setCompletedTodos;
-      const filteredTodos =  targetList.filter((_, index) => todoIndex !== index);
+      const filteredTodos = targetList.filter((_, index) => todoIndex !== index);
       setter(filteredTodos);
+      console.log(filteredTodos);
     }
   
      const createTaskHandler=()=>{

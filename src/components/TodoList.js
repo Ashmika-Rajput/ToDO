@@ -12,8 +12,8 @@ export default function NewTask(props) {
                 <div key={index}  className={classes.display} data-testid="task">  
                     <p>{todo}</p>
                   <div>
-                    <button onClick={()=> props.deleteHandler(index,'pending')} >Delete</button>
-                    <button onClick={()=> props.completeHandler(index,'completed')}>Complete</button>
+                    <button onClick={ ()=>props.deleteHandler(index,'pending')} >Delete</button>
+                    <button onClick={()=>props.completeHandler(index,'completed')}>Complete</button>
                   </div>
                 </div>
               ))}
@@ -26,7 +26,7 @@ export default function NewTask(props) {
                 <div key={index} className={classes.display} data-testid="task" >
                   <p>{todo}</p>
                   <div>
-                    <button onClick={()=> props.deleteHandler(index)} >Delete</button>
+                    <button onClick={()=>props.deleteHandler(index)} >Delete</button>
                   </div>
                 </div>
               ))}
